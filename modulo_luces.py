@@ -4,16 +4,16 @@ import random
 from modulo_archivos import escribirPremio
 from modulo_matematico import calcularPremio, getApuesta, restarApuesta, reiniciarApuesta, anadirJugada
 
-led1 = LED()
-led2 = LED()
-led3 = LED()
-led4 = LED()
-led5 = LED()
-led6 = LED()
-led7 = LED()
-led8 = LED()
-led9 = LED()
-led10 = LED()
+led1 = LED(18)
+led2 = LED(16)
+led3 = LED(23)
+led4 = LED(13)
+led5 = LED(27)
+led6 = LED(4)
+led7 = LED(17)
+led8 = LED(5)
+led9 = LED(24)
+led10 = LED(25)
 
 arrayDeLeds = [led1, led2, led3, led4, led5, led6, led7, led8, led9, led10]
 
@@ -26,7 +26,7 @@ def girarRuleta(stop, direccion, velocidad, apuesta):
             time.sleep(velocidad)
             if stop == True:
                 color = comprobarColor()
-                premio = calcularPremio()
+                premio = calcularPremio(apuesta,color)
                 anadirJugada(apuesta,premio)
                 escribirPremio(apuesta, color, premio)
                 apagarLuces()
@@ -36,13 +36,13 @@ def girarRuleta(stop, direccion, velocidad, apuesta):
             arrayDeLeds[i].toggle()
             time.sleep(velocidad)
     elif direccion == False:
-        arrayDeLeds2 = arrayDeLeds.reverse()
+        arrayDeLeds2 = arrayDeLeds
         for i in range(len(arrayDeLeds2)):
             arrayDeLeds[i].toggle()
             time.sleep(velocidad)
             if stop == True:
                 color = comprobarColor()
-                premio = calcularPremio()
+                premio = calcularPremio(apuesta,color)
                 anadirJugada(apuesta,premio)
                 escribirPremio(apuesta, color, premio)
                 apagarLuces()
@@ -83,14 +83,14 @@ def parpadear(color):
             time.sleep(0.25)
         apagarLuces()
     if color == "verde":
-        for i in range(4):
+        for x in range(4):
             onOffTodas()
             time.sleep(0.5)
             onOffTodas()
             time.sleep(0.5)
         apagarLuces()
     if color == "amarillo":
-        for i in range(2):
+        for j in range(2):
             onOffTodas()
             time.sleep(0.75)
             onOffTodas()
@@ -129,13 +129,23 @@ def bienvenida(salir):
         led6.toggle()
         led8.toggle()
         led10.toggle()
-        time.sleep(0.5)
+        time.sleep(0.3)
+        led2.toggle()
+        led4.toggle()
+        led6.toggle()
+        led8.toggle()
+        led10.toggle()
         led1.toggle()
         led3.toggle()
         led5.toggle()
         led7.toggle()
         led9.toggle()
-        time.sleep(0.5)
+        time.sleep(0.3)
+        led1.toggle()
+        led3.toggle()
+        led5.toggle()
+        led7.toggle()
+        led9.toggle()
         
 def apagarLuces():
     if led1.is_active:
@@ -158,3 +168,4 @@ def apagarLuces():
         led9.toggle()
     if led10.is_active:
         led10.toggle()
+

@@ -1,4 +1,4 @@
-from modulo_matematico import calcularPremio, calcularTotal
+from modulo_matematico import calcularPremio, calcularTotal, getBalance
 f = open("premios.txt","w+")
 
 primeraVez = True
@@ -6,11 +6,12 @@ primeraVez = True
 def escribirBalance(balance):
     f.write("Estimado jugador:%d\r\n")
     f.write("Tu balance era de: ", balance,"%d\r\n")
+    global primeraVez
     primeraVez = False
     
 def escribirPremio(apuesta, color, premio):
     if primeraVez:
-        escribirBalance()
+        escribirBalance(getBalance())
     if color == "rojo":
         f.write("Apostaste: ", apuesta, " pero perdiste.", "%d\r\n")
     else:
