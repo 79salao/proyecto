@@ -1,6 +1,4 @@
-
 balance = 100
-
 apuesta = 0
 
 arrayDePremios = []
@@ -20,21 +18,27 @@ def calcularTotal():
     return total    
 
 def subirApuesta():
+    global balance
+    global apuesta
     if apuesta == balance:
         pass
     else:
         apuesta = apuesta + 1
 
 def bajarApuesta():
+    global apuesta
     if apuesta == 1:
         pass
     else:
         apuesta = apuesta - 1
 
 def restarApuesta():
+    global balance
+    global apuesta
     balance = balance - apuesta
 
 def reiniciarApuesta():
+    global apuesta
     apuesta = 0
 
 def calcularPremio(apuesta, color):
