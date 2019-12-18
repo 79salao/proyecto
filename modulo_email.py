@@ -1,23 +1,41 @@
-# Import smtplib for the actual sending function
+
+import modulo_archivos
 import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
+import os.path
 
-# Import the email modules we'll need
-from email.message import EmailMessage
+email = 'esmipruebapy@gmail.com'
+password = 'holamundo1234'
+send_to_email = 'salahdinb99@gmail.com'
+subject = 'This is the subject'
+message = 'This is my message'
+file_location = modulo_archivos.getPath()
 
-# Open the plain text file whose name is in textfile for reading.
-textfile = "premios.txt"
-with open(textfile) as fp:
-    # Create a text/plain message
-    msg = EmailMessage()
-    msg.set_content(fp.read())
+msg = MIMEMultipart()
+msg['From'] = email
+msg['To'] = send_to_email
+msg['Subject'] = subject
 
-# me == the sender's email address
-# you == the recipient's email address
-msg['Subject'] = f'The contents of {textfile}'
-msg['From'] = me
-msg['To'] = you
+msg.attach(MIMEText(message, 'plain'))
 
-# Send the message via our own SMTP server.
-s = smtplib.SMTP('localhost')
-s.send_message(msg)
-s.quit()
+# Setup the attachment
+filename = os.path.basename(file_location)
+attachment = open(file_location, "rb")
+part = MIMEBase('application', 'octet-stream')
+part.set_payload(attachment.read())
+encoders.encode_base64(part)
+part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+
+# Attach the attachment to the MIMEMultipart object
+msg.attach(part)
+
+server = smtplib.SMTP('smtp.gmail.com', 587)
+server.starttls()
+server.login(email, password)
+text = msg.as_string()
+server.sendmail(email, send_to_email, text)
+server.quit()
+modulo_archivos.borrarArchivo()
