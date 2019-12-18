@@ -1,5 +1,5 @@
-# Zaragoza Roulette creado por Salahdin y Mihai
-
+Creado por Salahdin y Mihai
+# Zaragoza Roulette
 Juego de ruleta con raspberry Pi programado en Python 3.
 
 ## Componentes de hardware necesarios:
