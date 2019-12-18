@@ -14,6 +14,12 @@ Juego de ruleta con raspberry Pi programado en Python 3.
 
 ## Configuración de hardware:
 
+
+
+![Hardware](/Untitledproyecto.png)
+
+
+
 ### Configuración de LEDs:
 
 Para los LEDs, el GND es compartido en la fila NEGATIVO de la placa IZQUIERDA.
