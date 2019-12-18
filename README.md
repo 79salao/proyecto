@@ -18,6 +18,8 @@ Juego de ruleta con raspberry Pi programado en Python 3.
 
 ![Hardware](/Untitledproyecto.png)
 
+![Hardware](/imagen.jpeg)
+
 
 
 ### Configuración de LEDs:
