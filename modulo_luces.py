@@ -10,7 +10,7 @@ led3 = LED(23)
 led4 = LED(13)
 led5 = LED(27)
 led6 = LED(4)
-led7 = LED(6)
+led7 = LED(17)
 led8 = LED(5)
 led9 = LED(24)
 led10 = LED(25)
@@ -168,10 +168,4 @@ def apagarLuces():
         led9.toggle()
     if led10.is_active:
         led10.toggle()
-
-
-
-
-
-
 

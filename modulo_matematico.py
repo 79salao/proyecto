@@ -6,14 +6,10 @@ arrayDePremios = []
 arrayDeApuestas = []
 
 def anadirJugada(apuesta, premio):
-    global arrayDePremios
-    global arrayDeApuestas
     arrayDePremios.append(premio)
     arrayDeApuestas.append(apuesta)
 
 def calcularTotal():
-    global arrayDePremios
-    global arrayDeApuestas
     total = 0
     for i in range(len(arrayDePremios)):
         total = total + arrayDePremios[i]

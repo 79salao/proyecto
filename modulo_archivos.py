@@ -1,15 +1,11 @@
 from modulo_matematico import calcularPremio, calcularTotal, getBalance
-import os
+f = open("premios.txt","w+")
 
-path = os.path.dirname(os.path.abspath(__file__))
-pathTotal = path + "\\premios.txt"
-f = open(pathTotal,"a+")
 primeraVez = True
 
 def escribirBalance(balance):
     f.write("Estimado jugador:%d\r\n")
-    write = "Tu balance era de: " + balance + "%d\r\n"
-    f.write(write)
+    f.write("Tu balance era de: ", balance,"%d\r\n")
     global primeraVez
     primeraVez = False
     
@@ -29,8 +25,4 @@ def escribirFinal():
     f.write("Gracias por jugar con nosotros.", "%d\r\n")
     f.write("Vuelve pronto!", "%d\r\n")
 
-def borrarArchivo():
-    f.truncate(0)
 
-def getPath():
-    return pathTotal
