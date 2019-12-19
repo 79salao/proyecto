@@ -1,5 +1,6 @@
 import smbus
 import time
+import modulo_matematico
 
 iniciada = False
 
@@ -47,13 +48,15 @@ def lcd_string(message,line):
 ########################################################
 
 def bienvenida():
+  global iniciada
   if iniciada == False:
     lcd_init()
     iniciada = True
   lcd_string("Bienvenido!",LCD_LINE_1)
   lcd_string("Gira la ruleta!",LCD_LINE_2)
 
-def mostrarApuesta(apuesta):
+def mostrarApuesta():
+  apuesta = modulo_matematico.apuesta
   mensaje = str(apuesta) + "€"
   lcd_string("La apuesta es de:",LCD_LINE_1)
   lcd_string(mensaje,LCD_LINE_2)
@@ -63,7 +66,8 @@ def mostrarPremio(premio):
   lcd_string("PREMIO! HAS GANADO",LCD_LINE_1)
   lcd_string(mensaje,LCD_LINE_2)
 
-def mostrarBalance(balance):
+def mostrarBalance():
+  balance = modulo_matematico.balance
   mensaje = str(balance) + "€"
   lcd_string("Tu balance es de",LCD_LINE_1)
   lcd_string(mensaje,LCD_LINE_2)

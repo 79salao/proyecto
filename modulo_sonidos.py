@@ -1,6 +1,5 @@
-
 import time
-import gpiozero
+from gpiozero import Buzzer
    
 buzzer = Buzzer(12)
 
