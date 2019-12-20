@@ -84,8 +84,20 @@ def mensajeGiro():
   lcd_string("Girando ruleta!",LCD_LINE_1)
   lcd_string("Buena suerte!",LCD_LINE_2)
 
+def selectapuesta():
+  lcd_string("Selecione una apuesta!",LCD_LINE_1)
+  lcd_string("Diviertase!!",LCD_LINE_2)
 
 
+def apuestaselecionada(apuesta):
+  mensaje = str(apuesta) + "€"
+  lcd_string("Usted a selecionado",LCD_LINE_1)
+  lcd_string(mensaje,LCD_LINE_2)
+
+
+def email():
+  lcd_string("Introduzca su email", LCD_LINE_1)
+  lcd_string("Gracias!! ",LCD_LINE_2)
 
 
 
